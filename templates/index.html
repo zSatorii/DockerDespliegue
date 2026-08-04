@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SENA - Centro de Biotecnología Agropecuaria</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background-color: #f4f4f9; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #008050; text-align: center; }
+        form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+        input, button { padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #008050; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #005938; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #008050; color: white; }
+        .error { color: red; background: #ffe6e6; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Centro de Biotecnología Agropecuaria</h1>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <h2>Registro de Aprendices</h2>
+        <form action="/registrar" method="POST">
+            <input type="text" name="nombre_completo" placeholder="Nombre Completo" required>
+            <input type="text" name="numero_documento" placeholder="Número de Documento" required>
+            <input type="text" name="ficha" placeholder="Número de Ficha" required>
+            <button type="submit">Guardar Aprendiz</button>
+        </form>
+
+        <h2>Aprendices Registrados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre Completo</th>
+                    <th>Documento</th>
+                    <th>Ficha</th>
+                    <th>Fecha Registro</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in aprendices %}
+                <tr>
+                    <td>{{ a.id }}</td>
+                    <td>{{ a.nombre_completo }}</td>
+                    <td>{{ a.numero_documento }}</td>
+                    <td>{{ a.ficha }}</td>
+                    <td>{{ a.creado_en }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" style="text-align: center;">No hay aprendices registrados aún.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
