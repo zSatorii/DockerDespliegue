@@ -29,6 +29,7 @@ services:
 
 
   web:
+    build: .
     image: 616yuuki/mi-app-python:latest
     container_name: app_produccion
     ports:
