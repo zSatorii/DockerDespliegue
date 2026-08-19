@@ -12,6 +12,16 @@ services:
       - ./npm-letsencrypt:/etc/letsencrypt
     networks:
       - red_interna
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - uptime-kuma-data:/app/data
+    networks:
+      - red_interna
 
   servidor-bd:
     image: mysql:8.0
@@ -46,3 +56,5 @@ networks:
     driver: bridge
 volumes:
   db_data:
+uptime-kuma-data:
+    name: uptime-kuma-data
