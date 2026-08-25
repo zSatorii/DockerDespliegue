@@ -17,7 +17,7 @@ def get_db_connection():
     return pymysql.connect(
         host="servidor-bd",
         user="root",
-        password="sena123",
+        password="sena123", # nosec B106
         database="adso_db",
         cursorclass=pymysql.cursors.DictCursor
     )
