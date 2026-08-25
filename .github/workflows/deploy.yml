@@ -22,7 +22,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: 616yuuki/mi-app-python:v1
+          tags: 616yuuki/mi-app-python:latest
 
       - name: Desplegar en servidor cloud
         uses: appleboy/ssh-action@v1.0.3
