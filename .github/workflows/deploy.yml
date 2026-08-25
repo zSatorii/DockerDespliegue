@@ -49,6 +49,9 @@ jobs:
           no-cache: true
           tags: 616yuuki/mi-app-python:latest
 
+      - name: Debug - buscar paquetes duplicados
+        run: docker run --rm 616yuuki/mi-app-python:latest find / -iname "*msgpack*" -o -iname "*setuptools*"
+
       - name: Escanear contenedor con trivy
         uses: aquasecurity/trivy-action@master
         with:
@@ -73,5 +76,3 @@ jobs:
               docker compose pull web
               docker compose up -d
 
-      - name: Debug - buscar paquetes duplicados
-        run: docker run --rm 616yuuki/mi-app-python:latest find / -iname "*msgpack*" -o -iname "*setuptools*"
