@@ -1,0 +1,9 @@
+venv/
+tempdir/
+.git
+.github
+npm-letsencrypt/
+npm_data/
+__pycache__/
+*.pyc
+.env
