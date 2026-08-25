@@ -72,3 +72,6 @@ jobs:
               cd ~/DockerDespliegue
               docker compose pull web
               docker compose up -d
+
+      - name: Debug - buscar paquetes duplicados
+        run: docker run --rm 616yuuki/mi-app-python:latest find / -iname "*msgpack*" -o -iname "*setuptools*"
