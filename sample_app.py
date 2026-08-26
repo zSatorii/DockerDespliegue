@@ -34,19 +34,7 @@ def init_db():
 
 @sample.route("/", methods=["GET"])
 def home():
-    init_db()
-    aprendices = []
-    error = None
-    try:
-        conn = get_db_connection()
-        with conn.cursor() as cursor:
-            cursor.execute("SELECT * FROM aprendices ORDER BY id DESC")
-            aprendices = cursor.fetchall()
-        conn.close()
-    except Exception as e:
-        error = f"Error al consultar la BD: {e}"
-
-    return render_template("index.html", aprendices=aprendices, error=error)
+    return "Error provocado intencionalmente para la prueba", 500
 
 @sample.route("/registrar", methods=["POST"])
 def registrar():
@@ -68,4 +56,4 @@ def registrar():
     return redirect(url_for("home"))
 
 if __name__ == "__main__":
-    sample.run(host="0.0.0.0", port=5050, debug=False) # nosec B104
+    sample.run(host="0.0.0.0", port=5050, debug=True) # nosec B104
