@@ -24,10 +24,11 @@ jobs:
 
       - name: Escaneo de seguridad (bandit)
         run: bandit -r . -s B101   
+
       - name: Ejecutar pruebas pytest
         run: pytest
 
-  build-and-deploy:
+  build-and-push:
     needs: test-and-security
     runs-on: ubuntu-latest
     steps:
