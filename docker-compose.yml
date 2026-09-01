@@ -23,6 +23,17 @@ services:
     networks:
       - red_interna
 
+    dozzle:
+      image: amir20/dozzle:latest
+      container_name: dozzle
+      restart: always
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      ports:
+        - "8080:8080"
+      networks:
+        - red_interna
+
   servidor-bd:
     image: mysql:8.0
     container_name: mysql_produccion
